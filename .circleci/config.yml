@@ -60,4 +60,3 @@ workflows:
                 - master
     jobs:
       - build_node_image
-
