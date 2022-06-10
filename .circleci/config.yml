@@ -8,7 +8,7 @@ jobs:
     steps:
       - run: git clone https://github.com/kubernetes-sigs/kind.git .
       - run: make build
-       - run:
+      - run:
           name: check kind version
           command: ./bin/kind version
       - run: git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
