@@ -8,18 +8,17 @@ jobs:
     steps:
       - run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
       - run: git clone https://github.com/kubernetes-sigs/kind.git .
-      - run: GOOS=linux GOARCH=ppc64le make build
+      - run: make build
       - run: ./bin/kind version
       - run: git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
-      - run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
       - run:
           name: Build node image
           no_output_timeout: 30m
-          command: ./bin/kind build node-image --image mwaghmodepersistent/kindnode:latest --kube-root /tmp/kubernetes -v=3 --arch ppc64le
+          command: ./bin/kind build node-image --image mwaghmodepersistent/kindnode:latest --kube-root /tmp/kubernetes -v=3
       - run:
           name: Install kubectl
           command: |
-            curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/ppc64le/kubectl
+            curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
             chmod +x kubectl
             sudo cp kubectl /usr/local/bin/
       - run:
