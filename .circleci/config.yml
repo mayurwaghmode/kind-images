@@ -39,11 +39,11 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
             echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-            docker push aojea/kindnode:latest
+            docker push mwaghmodepersistent/kindnode:latest
             export KUBE_VERSION=$(git -C /tmp/kubernetes log -1 --pretty='%h')
             export KIND_VERSION=$(git log -1 --pretty='%h')
-            docker tag aojea/kindnode:latest aojea/kindnode:kind${KIND_VERSION}_k8s${KUBE_VERSION}
-            docker push aojea/kindnode:kind${KIND_VERSION}_k8s${KUBE_VERSION}
+            docker tag mwaghmodepersistent/kindnode:latest mwaghmodepersistent/kindnode:kind${KIND_VERSION}_k8s${KUBE_VERSION}
+            docker push mwaghmodepersistent/kindnode:kind${KIND_VERSION}_k8s${KUBE_VERSION}
 
 workflows:
   version: 2
