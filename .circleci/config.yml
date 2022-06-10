@@ -10,6 +10,7 @@ jobs:
       - run: make build
       - run: git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
       - run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+      - run: kind version
       - run:
           name: Build node image
           no_output_timeout: 30m
