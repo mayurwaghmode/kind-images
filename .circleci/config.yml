@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Build node image
           no_output_timeout: 30m
-          command: ./bin/kind build node-image --image aojea/kindnode:latest --kube-root /tmp/kubernetes -v=3
+          command: ./bin/kind build node-image --image mwaghmodepersistent/kindnode:latest --kube-root /tmp/kubernetes -v=3
       - run:
           name: Install kubectl
           command: |
@@ -24,7 +24,7 @@ jobs:
           command: |
             KUBECONFIG="${HOME}/kind-test-config"
             export KUBECONFIG
-            ./bin/kind create cluster --image aojea/kindnode:latest -v=3 --wait 1m --retain
+            ./bin/kind create cluster --image mwaghmodepersistent/kindnode:latest -v=3 --wait 1m --retain
             kubectl get nodes -o wide
             kubectl get pods --all-namespaces -o wide
             kubectl get services --all-namespaces -o wide
