@@ -4,7 +4,6 @@ jobs:
     machine:
       enabled: true
       resource_class: mayurwaghmode/runner
-    working_directory: ~
     steps:
       - run:
           name: Create kind cluster
