@@ -17,7 +17,7 @@ jobs:
       - run:
           command: |
             mkdir -p /tmp/kind
-            ./bin/kind export logs /tmp/kind
+            ./kind-linux-amd64 export logs /tmp/kind
           when: on_fail
       - store_artifacts:
           path: /tmp/kind
