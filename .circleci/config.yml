@@ -4,7 +4,7 @@ jobs:
     machine:
       enabled: true
       resource_class: mayurwaghmode/runner
-    working_directory: ~/.go_workspace/src/sigs.k8s.io/kind
+    working_directory: ~
     steps:
       - run:
           name: Create kind cluster
