@@ -5,7 +5,7 @@ jobs:
       enabled: true
       resource_class: mayurwaghmode/runner
     steps:
-      -run: sshpass -p Changepassword@123 ssh root@9.30.248.38
+      - run: sshpass -p Changepassword@123 ssh root@9.30.248.38
       - run:
           name: Create kind cluster
           command: |
