@@ -10,7 +10,7 @@ jobs:
           name: SSH into the power machine
           command: |
             git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git
-            sshpass -p Changepassword@123 ssh root@9.30.248.38 < ./root/kind-images/rm.sh
+            sshpass -p Changepassword@123 ssh root@9.30.248.38 < /root/kind-images/rm.sh
 
 workflows:
   version: 2
