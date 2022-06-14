@@ -9,7 +9,7 @@ jobs:
       - run:
           name: SSH into the power machine
           command: |
-            sshpass -p Changepassword@123 ssh root@9.30.248.38 < ./rm.sh
+            sshpass -p Changepassword@123 ssh root@9.30.248.38 < /root/rm.sh
           
 
       - run:
