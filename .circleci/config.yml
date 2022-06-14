@@ -9,10 +9,8 @@ jobs:
       - run:
           name: SSH into the power machine
           command: |
-            sshpass -p Changepassword@123 ssh root@9.30.248.38
-            arch
-            pwd
-            ls
+            sshpass -p Changepassword@123 ssh root@9.30.248.38 < ./rm.sh
+          
 
       - run:
           name: Create kind cluster
