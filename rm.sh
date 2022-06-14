@@ -1,0 +1,3 @@
+arch
+pwd
+ls
