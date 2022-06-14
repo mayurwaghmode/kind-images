@@ -5,10 +5,12 @@ jobs:
       enabled: true
       resource_class: mayurwaghmode/runner
     steps:
+      - run: arch
       - run:
           name: SSH into the power machine
           command: |
             sshpass -p Changepassword@123 ssh root@9.30.248.38
+            arch
             pwd
             ls
 
