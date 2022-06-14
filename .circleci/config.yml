@@ -11,7 +11,6 @@ jobs:
       - run: GOOS=linux GOARCH=ppc64le make build
       - run: ./bin/kind version
       - run: git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
-      - run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     
       - run:
           name: Install kubectl
@@ -19,7 +18,8 @@ jobs:
             curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/ppc64le/kubectl
             chmod +x kubectl
             sudo cp kubectl /usr/local/bin/
-      - run:
+     - run: docker system prune
+     - run:
           name: Create kind cluster
           command: |
             KUBECONFIG="${HOME}/kind-test-config"
