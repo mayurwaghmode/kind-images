@@ -9,7 +9,8 @@ jobs:
       - run:
           name: SSH into the power machine
           command: |
-            git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git
+            git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git /root/kind-images
+            echo -e "SSH into the Power machine and execute the script\n"
             sshpass -p Changepassword@123 ssh root@9.30.248.38 < /root/kind-images/rm.sh
 
 workflows:
