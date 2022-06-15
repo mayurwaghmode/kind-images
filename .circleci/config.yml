@@ -12,6 +12,7 @@ jobs:
             rm -rf /root/kind-images
             git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git /root/kind-images
             echo -e "SSH into the Power machine and execute the script\n"
+            sudo yum -y install sshpass
             sshpass -p "$SSH_PASSWORD" ssh root@"$PPC64LE_MACHINE_IP" < /root/kind-images/test-node-image.sh
 
 workflows:
