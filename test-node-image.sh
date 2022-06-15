@@ -5,7 +5,7 @@ echo -e "Build Kind binary from the source code present in the master\n"
 make build
 git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
 echo -e "Build node image\n" 
-./bin/kind build node-image --image mayurwaghmode/kindnode:latest --kube-root /tmp/kubernetes -v=3
+./bin/kind build node-image --image mwaghmodepersistent/kindnode:latest --kube-root /tmp/kubernetes -v=3
 echo -e "Install kubectl\n" 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/ppc64le/kubectl
 chmod +x kubectl
@@ -13,7 +13,7 @@ sudo cp kubectl /usr/local/bin/
 echo -e "Create Kind cluster\n"
 KUBECONFIG="${HOME}/kind-test-config"
 export KUBECONFIG
-./bin/kind create cluster --image mayurwaghmode/kindnode:latest -v=3 --wait 1m --retain
+./bin/kind create cluster --image mwaghmodepersistent/kindnode:latest -v=3 --wait 1m --retain
 kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 kubectl get services --all-namespaces -o wide
