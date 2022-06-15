@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: arch
       - run:
-          name: SSH into the power machine
+          name: Build and test node image on ppc64le architecture
           command: |
             rm -rf /root/kind-images
             git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git /root/kind-images
