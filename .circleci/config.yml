@@ -1,32 +1,11 @@
-version: 2
-jobs:
-  build_node_image:
-    machine:
-      enabled: true
-      resource_class: mayurwaghmode/kind-runner-x86
-    steps:
-      - run: add_ssh_keys
-      - run: arch
-      - run:
-          name: Build and test node image on ppc64le architecture
-          command: |
-            rm -rf /root/kind-images
-            git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git /root/kind-images
-            echo -e "SSH into the Power machine and execute the script\n"
-            ssh -i /root/.ssh/id_rsa ubuntu@169.57.212.36 < /root/kind-images/test-node-image.sh
-
+version: 2.1
 workflows:
-  version: 2
-  build_images:
+  testing:
     jobs:
-      - build_node_image
-  nightly:
-    triggers:
-      - schedule:
-          cron: "0 0 * * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - build_node_image
+      - runner-test
+jobs:
+  runner-test:
+    machine: true
+    resource_class: mayurwaghmode/kind-runner-x86
+    steps:
+      - run: echo "Hi I'm on Runners!"
