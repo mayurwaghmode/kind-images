@@ -1,8 +1,7 @@
-sudo rm -rf ~/.go_workspace/src/sigs.k8s.io/
-sudo mkdir -p  ~/.go_workspace/src/sigs.k8s.io/
-cd ~/.go_workspace/src/sigs.k8s.io/
-git clone https://github.com/kubernetes-sigs/kind.git
-cd kind
+sudo rm -rf ~/.go_workspace/src/sigs.k8s.io/kind
+sudo mkdir -p  ~/.go_workspace/src/sigs.k8s.io/kind
+cd ~/.go_workspace/src/sigs.k8s.io/kind
+git clone https://github.com/kubernetes-sigs/kind.git .
 sudo make build
 sudo rm -rf /tmp/kubernetes
 git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
