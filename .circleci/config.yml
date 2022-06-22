@@ -5,7 +5,6 @@ jobs:
       enabled: true
       resource_class: mayurwaghmode/kind-runner-x86
     steps:
-      - run: add_ssh_keys
       - run: arch
       - run:
           name: Build and test node image on ppc64le architecture
