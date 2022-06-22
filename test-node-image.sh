@@ -2,6 +2,7 @@ mkdir -p ~/.go_workspace/src/sigs.k8s.io/kind
 cd ~/.go_workspace/src/sigs.k8s.io/kind
 git clone https://github.com/kubernetes-sigs/kind.git .
 echo -e "Build Kind binary from the source code present in the master\n" 
+yum install make
 make build
 git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
 echo -e "Build node image\n" 
