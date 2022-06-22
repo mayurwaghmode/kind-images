@@ -3,7 +3,8 @@ jobs:
   build_node_image:
     machine:
       enabled: true
-      image: ubuntu-2004:202101-01
+      resource_class: mayurwaghmode/kind-runner-x86
+      
     working_directory: ~/.go_workspace/src/sigs.k8s.io/kind
     steps:
       - run: git clone https://github.com/kubernetes-sigs/kind.git .
