@@ -1,7 +1,6 @@
 echo -e "Install Docker\n"
-sudo yum install -y yum-utils device-mapper-persistent-data lvm2 tc
-sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo yum install docker-ce docker-ce-cli
+sudo apt-get install -y yum-utils device-mapper-persistent-data lvm2 tc
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 systemctl daemon-reload
 systemctl restart docker
 sudo systemctl enable docker
@@ -10,7 +9,7 @@ cd ~/.go_workspace/src/sigs.k8s.io/kind
 git clone https://github.com/kubernetes-sigs/kind.git .
 echo -e "Build Kind binary from the source code present in the master\n" 
 echo -e "Install make\n" 
-yum install make
+apt-get install make
 make build
 git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
 echo -e "Build node image\n" 
