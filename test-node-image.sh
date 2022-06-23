@@ -11,4 +11,5 @@ echo -e "Check the kind version\n"
 ./bin/kind version
 echo -e "Download kubernetes source code\n" 
 git clone https://github.com/kubernetes/kubernetes.git /tmp/kubernetes
+echo -e "Build node image for ppc64le architecture\n" 
 sudo ./bin/kind build node-image --image mwaghmodepersistent/kindnode:amd64 --kube-root /tmp/kubernetes -v=3
