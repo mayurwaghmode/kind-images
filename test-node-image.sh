@@ -16,7 +16,7 @@ sudo make build
 echo -e "Check the kind version\n"
 ./bin/kind version
 echo -e "Build node image for ppc64le architecture\n" 
-sudo ./bin/kind build node-image --image mwaghmodepersistent/kindnode:amd64 --kube-root $HOME/go/src/k8s.io/kubernetes -v=3
+sudo ./bin/kind build node-image --image mwaghmodepersistent/kindnode:ppc64le --kube-root $HOME/go/src/k8s.io/kubernetes -v=3
 echo -e "Install kubectl\n" 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/ppc64le/kubectl
 sudo chmod +x kubectl
@@ -26,7 +26,7 @@ sudo ./bin/kind delete cluster --name kind
 echo -e "Create Kind cluster\n"
 KUBECONFIG="${HOME}/kind-test-config"
 export KUBECONFIG
-sudo ./bin/kind create cluster --image mwaghmodepersistent/kindnode:latest -v=3 --wait 1m --retain
+sudo ./bin/kind create cluster --image mwaghmodepersistent/kindnode:ppc64le -v=3 --wait 1m --retain
 kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 kubectl get services --all-namespaces -o wide
@@ -35,8 +35,8 @@ sudo mkdir -p /tmp/kind
 sudo ./bin/kind export logs /tmp/kind
 echo -e "Publish Docker Image to Docker Hub\n"
 echo "$DOCKERHUB_PASS" | sudo docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-sudo docker push mwaghmodepersistent/kindnode:latest
+sudo docker push mwaghmodepersistent/kindnode:ppc64le
 export KUBE_VERSION=$(git -C /tmp/kubernetes log -1 --pretty='%h')
 export KIND_VERSION=$(git log -1 --pretty='%h')
-sudo docker tag mwaghmodepersistent/kindnode:latest mwaghmodepersistent/kindnode:kind${KIND_VERSION}_k8s${KUBE_VERSION}
+sudo docker tag mwaghmodepersistent/kindnode:ppc64le mwaghmodepersistent/kindnode:kind${KIND_VERSION}_k8s${KUBE_VERSION}
 sudo docker push mwaghmodepersistent/kindnode:kind${KIND_VERSION}_k8s${KUBE_VERSION}
