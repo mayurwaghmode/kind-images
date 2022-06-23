@@ -7,6 +7,7 @@ jobs:
       
     working_directory: ~/.go_workspace/src/sigs.k8s.io/kind
     steps:
+      - run: apt-get install make
       - run: rm -rf ~/.go_workspace/src/sigs.k8s.io/kind
       - run: rm -rf /tmp/kubernetes
       - run: git clone https://github.com/kubernetes-sigs/kind.git .
