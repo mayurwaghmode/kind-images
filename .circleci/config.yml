@@ -3,13 +3,13 @@ jobs:
   build_node_image:
     machine:
       enabled: true
-      resource_class: mayurwaghmode/kind-runner-x86
+      resource_class: mayurwaghmode/runner
     steps:
       - run: arch
       - run:
           name: Fix ssh Could not resolve hostname
           command: |
-            ssh-keyscan 169.57.212.36 >> ~/.ssh/known_hosts # Add live server IP to known hosts.
+            ssh-keyscan 9.30.56.157 >> ~/.ssh/known_hosts # Add live server IP to known hosts.
       - add_ssh_keys: # add private SSH key from CircleCI account based on fingerprint.
           fingerprints:
             - "SHA256:H4oJmU8SvvL87bsViII/1U369zx4wwZoXhyixaduktk"
@@ -19,7 +19,7 @@ jobs:
             rm -rf /root/kind-images
             git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git /root/kind-images
             echo -e "SSH into the Power machine and execute the script\n"
-            ssh ubuntu@169.57.212.36 < /root/kind-images/test-node-image.sh
+            ssh root@9.30.56.157 < /root/kind-images/test-node-image.sh
 
 workflows:
   version: 2
