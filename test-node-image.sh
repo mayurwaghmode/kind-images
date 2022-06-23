@@ -1,4 +1,5 @@
 sudo rm -rf $HOME/go/
+sudo rm -rf go1.18.3.linux-ppc64le.tar.*
 echo -e "Install and go and export the path\n" 
 sudo wget https://go.dev/dl/go1.18.3.linux-ppc64le.tar.gz
 sudo tar -xzf go1.18.3.linux-ppc64le.tar.gz
