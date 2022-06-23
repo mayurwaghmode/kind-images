@@ -24,6 +24,9 @@ jobs:
             chmod +x kubectl
             sudo cp kubectl /usr/local/bin/
       - run:
+          name: Deleting existing kind cluster
+          command: ./bin/kind delete cluster --name kind
+      - run:
           name: Create kind cluster
           command: |
             KUBECONFIG="${HOME}/kind-test-config"
