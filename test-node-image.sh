@@ -8,9 +8,9 @@ cd $HOME/go/
 sudo mkdir $HOME/go/src/k8s.io
 cd $HOME/go/src/k8s.io
 echo -e "Clone the Kubernetes Source code source code\n" 
-sudo git clone https://github.com/kubernetes/kubernetes
+git clone https://github.com/kubernetes/kubernetes
 echo -e "Download kind source code\n" 
-sudo git clone https://github.com/kubernetes-sigs/kind.git
+git clone https://github.com/kubernetes-sigs/kind.git
 cd $HOME/go/src/k8s.io/kind
 echo -e "Build Kind binary from the source code present in the master\n" 
 sudo make build
