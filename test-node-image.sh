@@ -1,4 +1,7 @@
-sudo rm -rf go
+echo -e "Do the clean-up\n" 
+sudo rm -rf $HOME/go/
+sudo rm -rf go1.18.3.linux-ppc64le.tar.*
+sudo rm -rf go1.18.3.linux-ppc64le.tar.gz.*
 echo -e "Install and go and export the path\n" 
 sudo wget https://go.dev/dl/go1.18.3.linux-ppc64le.tar.gz
 sudo tar -xzf go1.18.3.linux-ppc64le.tar.gz
@@ -7,9 +10,9 @@ cd $HOME/go/
 sudo mkdir $HOME/go/src/k8s.io
 cd $HOME/go/src/k8s.io
 echo -e "Clone the Kubernetes Source code source code\n" 
-sudo git clone https://github.com/kubernetes/kubernetes
+git clone https://github.com/kubernetes/kubernetes
 echo -e "Download kind source code\n" 
-sudo git clone https://github.com/kubernetes-sigs/kind.git
+git clone https://github.com/kubernetes-sigs/kind.git
 cd $HOME/go/src/k8s.io/kind
 echo -e "Build Kind binary from the source code present in the master\n" 
 sudo make build
