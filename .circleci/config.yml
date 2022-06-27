@@ -33,6 +33,6 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - ssh-power-fyre-ppc64le
     jobs:
       - build_node_image
