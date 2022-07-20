@@ -9,7 +9,7 @@ cd $HOME/go/
 mkdir $HOME/go/src/k8s.io
 cd $HOME/go/src/k8s.io
 echo -e "Clone the Kubernetes Source code source code\n" 
-git clone -b v1.24.3 https://github.com/kubernetes/kubernetes
+git clone -b v1.24.2 https://github.com/kubernetes/kubernetes
 echo -e "Download kind\n" 
 wget https://github.com/kubernetes-sigs/kind/releases/download/v0.14.0/kind-linux-ppc64le
 chmod u+x kind-linux-ppc64le
