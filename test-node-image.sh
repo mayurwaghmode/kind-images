@@ -34,5 +34,5 @@ echo -e "Export logs\n"
 sudo mkdir -p /tmp/kind
 sudo ./bin/kind export logs /tmp/kind
 echo -e "Publish Docker Image to Docker Hub\n"
-echo "$QUAY_PASS" | sudo docker login -u "$QUAY_USERNAME" --password-stdin
+echo "$QUAY_PASS" | sudo docker login quay.io -u "$QUAY_USERNAME" --password-stdin
 sudo docker push quay.io/mayurwaghmode111/node-ppc64le:ppc64le
