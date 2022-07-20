@@ -17,23 +17,23 @@ mv kind-linux-ppc64le /usr/local/bin/kind
 echo -e "Check the kind version\n"
 kind version
 echo -e "Build node image for ppc64le architecture\n" 
-sudo ./bin/kind build node-image --image quay.io/mayurwaghmode111/node-ppc64le:ppc64le --kube-root $HOME/go/src/k8s.io/kubernetes -v=3
+sudo kind build node-image --image quay.io/mayurwaghmode111/node-ppc64le:ppc64le --kube-root $HOME/go/src/k8s.io/kubernetes -v=3
 echo -e "Install kubectl\n" 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/ppc64le/kubectl
 sudo chmod +x kubectl
 sudo cp kubectl /usr/local/bin/
 echo -e "Deleting existing kind cluster\n"
-sudo ./bin/kind delete cluster --name kind
+sudo kind delete cluster --name kind
 echo -e "Create Kind cluster\n"
 KUBECONFIG="${HOME}/kind-test-config"
 export KUBECONFIG
-sudo ./bin/kind create cluster --image quay.io/mayurwaghmode111/node-ppc64le:ppc64le -v=3 --wait 1m --retain
+sudo kind create cluster --image quay.io/mayurwaghmode111/node-ppc64le:ppc64le -v=3 --wait 1m --retain
 kubectl get nodes -o wide
 kubectl get pods --all-namespaces -o wide
 kubectl get services --all-namespaces -o wide
 echo -e "Export logs\n"
 sudo mkdir -p /tmp/kind
-sudo ./bin/kind export logs /tmp/kind
+sudo kind export logs /tmp/kind
 echo -e "Publish Docker Image to Docker Hub\n"
 echo "$QUAY_PASS" | sudo docker login quay.io -u "$QUAY_USERNAME" --password-stdin
 sudo docker push quay.io/mayurwaghmode111/node-ppc64le:ppc64le
