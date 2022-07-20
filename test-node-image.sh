@@ -37,3 +37,5 @@ kind export logs /tmp/kind
 echo -e "Publish Docker Image to Docker Hub\n"
 echo "$QUAY_PASS" | docker login quay.io -u "$QUAY_USERNAME" --password-stdin
 docker push quay.io/mayurwaghmode111/node-ppc64le:ppc64le
+docker tag quay.io/mayurwaghmode111/node-ppc64le:ppc64le quay.io/mayurwaghmode111/node-ppc64le:v1.24.2
+docker push quay.io/mayurwaghmode111/node-ppc64le:v1.24.2
