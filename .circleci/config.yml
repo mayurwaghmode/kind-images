@@ -23,7 +23,7 @@ jobs:
             cd /root/$GH_REPO
             chmod +x /root/$GH_REPO/build-on-ppc64le.sh
             echo -e "SSH into the ppc64le machine and execute the script\n"
-            ssh root@9.30.140.113 < /root/$GH_REPO/build-on-ppc64le.sh $GH_REPO "$QUAY_REPO" "$QUAY_USER" "$QUAY_PASS"
+            ssh root@9.30.140.113 < /root/$GH_REPO/build-on-ppc64le.sh $GH_REPO $QUAY_REPO $QUAY_USER $QUAY_PASS
             
 workflows:
   version: 2
