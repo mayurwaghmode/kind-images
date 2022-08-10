@@ -31,5 +31,3 @@ workflows:
   build_images:
     jobs:
       - build_node_image
-    jobs:
-      - build_node_image
