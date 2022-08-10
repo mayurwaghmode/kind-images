@@ -3,23 +3,28 @@ jobs:
   build_node_image:
     machine:
       enabled: true
-      resource_class: mayurwaghmode/runner
+      resource_class: mayurwaghmode/alkalify1-x86-runner
     steps:
       - run: arch
       - run:
           name: Fix ssh Could not resolve hostname
           command: |
-            ssh-keyscan 9.30.214.147 >> ~/.ssh/known_hosts # Add live server IP to known hosts.
+            ssh-keyscan 9.30.140.113 >> ~/.ssh/known_hosts # Add live server IP to known hosts.
       - add_ssh_keys: # add private SSH key from CircleCI account based on fingerprint.
           fingerprints:
-            - "SHA256:H4oJmU8SvvL87bsViII/1U369zx4wwZoXhyixaduktk"
+            - "SHA256:5L/0DVwFUNmuF1JjWIyJfvekdIw5wV+zO3R61wAMj4w"
       - run:
           name: Build and test node image on ppc64le architecture
           command: |
-            rm -rf /root/kind-images
-            git clone -b ssh-power https://github.com/mayurwaghmode/kind-images.git /root/kind-images
-            echo -e "SSH into the Power machine and execute the script\n"
-            ssh root@9.30.214.147 < /root/kind-images/test-node-image.sh
+            echo $QUAY_REPO:$(uname -m)
+            echo "$QUAY_PASS"
+            sudo rm -rf /root/$GH_REPO
+            git clone -b hosted-multi-arch https://github.com/mayurwaghmode/circleCI-multi-arch.git /root/$GH_REPO
+            cd /root/$GH_REPO
+            chmod +x /root/$GH_REPO/build-on-ppc64le.sh
+            echo -e "SSH into the ppc64le machine and execute the script\n"
+            ssh root@9.30.140.113 < /root/$GH_REPO/build-on-ppc64le.sh
+            
 
 workflows:
   version: 2
@@ -29,10 +34,9 @@ workflows:
   nightly:
     triggers:
       - schedule:
-          cron: "0 0 * * 0"
           filters:
             branches:
               only:
-                - ssh-power-fyre-ppc64le
+                - test-mullt-arch
     jobs:
       - build_node_image
