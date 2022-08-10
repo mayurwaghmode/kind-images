@@ -31,12 +31,5 @@ workflows:
   build_images:
     jobs:
       - build_node_image
-  nightly:
-    triggers:
-      - schedule:
-          filters:
-            branches:
-              only:
-                - test-mullt-arch
     jobs:
       - build_node_image
